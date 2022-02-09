@@ -10,3 +10,24 @@ class Category(models.Model):
     
   def get_absolute_url(self):
     return '/{}/'.self.slug
+    
+  def __str__(self):
+    return self.name
+
+class Product(models.Model):
+  category = models.ForeignKey(Category, on_delete=models.CASCADE)
+  name = models.CharField(max_length=200)
+  slug = models.SlugField()
+  price = models.DecimalField(max_digits=7, decimal_places=2)
+  description = models.TextField(max_length=200, blank=True, null=True)
+  product_image = models.ImageField(upload_to='uploads/')
+  date_created = models.DateTimeField(auto_now_add=True)
+  
+  class Meta:
+    ordering = ['-date_created']
+    
+  def get_absolute_url(self):
+    return f"/{self.category.slug}/{self.slug}/"
+    
+  def __str__(self):
+    return self.name
