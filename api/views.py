@@ -34,3 +34,8 @@ class ListCategoryProductsAPI(APIView):
     qs = Product.objects.filter(category=category_name)
     serializer = ProductSerializer(qs, many=True)
     return Response(serializer.data)
+
+class VueApiResponse(APIView):
+  def post (self, vue_data, *args, **kwarg):
+    print(vue_data)
+    return Response(vue_data)
