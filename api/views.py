@@ -6,7 +6,7 @@ from .serializers import CategorySerializer, ProductSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-class CategoryAPI(mixins.CreateModelMixin, mixins.ListModelMixin, generics.GenericAPIView):
+class CategoryAPI(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
   serializer_class = CategorySerializer
   queryset = Category.objects.all()
   
@@ -14,7 +14,7 @@ class CategoryAPI(mixins.CreateModelMixin, mixins.ListModelMixin, generics.Gener
     return self.list(self, request, *args, **kwargs)
   
   def post(self, request, *args, **kwargs):
-    return self.create(self, request, *args, **kwargs)
+    return self.create(request, *args, **kwargs)
 
 class LatestProductsAPI(mixins.ListModelMixin, generics.GenericAPIView):
   serializer_class = ProductSerializer
@@ -27,7 +27,7 @@ class CreateProductAPI(mixins.CreateModelMixin, generics.GenericAPIView):
   queryset = Product.objects.all()
   
   def post(self, request, *args, **kwargs):
-    return self.create(self, request, *args, **kwargs)
+    return self.create(request, *args, **kwargs)
 
 class ListCategoryProductsAPI(APIView):
   def get(self, request, category_name, *args, **kwargs):

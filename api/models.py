@@ -9,7 +9,7 @@ class Category(models.Model):
     ordering = ['-date_created']
     
   def get_absolute_url(self):
-    return '/{}/'.self.slug
+    return f'{self.slug}'
     
   def __str__(self):
     return self.name
@@ -27,7 +27,7 @@ class Product(models.Model):
     ordering = ['-date_created']
     
   def get_absolute_url(self):
-    return f"/{self.category.slug}/{self.slug}/"
+    return f"/{self.category.slug}/{self.name}/"
     
   def __str__(self):
     return self.name
