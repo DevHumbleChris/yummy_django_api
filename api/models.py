@@ -3,10 +3,11 @@ from django.db import models
 class Category(models.Model):
   name = models.CharField(max_length=50)
   slug = models.SlugField()
+  icon_image_url = models.URLField(max_length=300)
   date_created = models.DateTimeField(auto_now_add=True)
   
   class Meta:
-    ordering = ['-date_created']
+    ordering = ['id']
     
   def get_absolute_url(self):
     return f'{self.slug}'

@@ -5,7 +5,7 @@ class CategorySerializer(serializers.ModelSerializer):
   class Meta:
     model = Category
     fields = (
-    'id', 'name', 'slug', 'get_absolute_url', 'date_created'
+    'id', 'name', 'slug', 'icon_image_url', 'get_absolute_url', 'date_created'
     )
 
 class ProductSerializer(serializers.ModelSerializer):
