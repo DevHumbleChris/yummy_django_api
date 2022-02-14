@@ -130,4 +130,5 @@ CORS_ALLOWED_ORIGINS = [
   'http://localhost',
   'http://127.0.0.1:8080',
   'https://e-yummy-ke.web.app'
-]
+]import django_heroku
+django_heroku.settings(locals())
