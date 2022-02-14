@@ -13,7 +13,7 @@ Yummy Django API, it's the exclusive API used for the [e-yummy-ke](https://e-yum
 
 ## API ROUTES.
 
-Web URL: [https://e-yummy-ke-api.herokuapp](https://e-yummy-ke.herokuapp.com)
+Web URL: [https://e-yummy-ke-api.herokuapp](https://e-yummy-ke.api.herokuapp.com)
 
 Home Route.
 > ALLOWED METHODS: GET, POST
