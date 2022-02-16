@@ -30,5 +30,8 @@ class Product(models.Model):
   def get_absolute_url(self):
     return f"/{self.category.slug}/{self.name}/"
     
+  def category_slug(self):
+    return self.category.slug
+    
   def __str__(self):
     return self.name

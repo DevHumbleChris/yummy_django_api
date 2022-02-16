@@ -10,7 +10,7 @@ class CategoryAdmin(admin.ModelAdmin):
   
 class ProductAdmin(admin.ModelAdmin):
   fieldsets = [
-    ('Product Information', {'fields': ['category', 'name', 'price', 'description']}), 
+    ('Product Information', {'fields': ['category', 'name', 'slug', 'price', 'description']}), 
     ('Product Image', {'fields': ['product_image']})
   ]
 

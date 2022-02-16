@@ -30,8 +30,9 @@ class CreateProductAPI(mixins.CreateModelMixin, generics.GenericAPIView):
     return self.create(request, *args, **kwargs)
 
 class ListCategoryProductsAPI(APIView):
-  def get(self, request, category_name, *args, **kwargs):
-    qs = Product.objects.filter(category=category_name)
+  def get(self, request, category_slug, *args, **kwargs):
+    print(category_slug)
+    qs = Product.objects.filter(category__slug= category_slug)
     serializer = ProductSerializer(qs, many=True)
     return Response(serializer.data)
 
