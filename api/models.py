@@ -33,5 +33,8 @@ class Product(models.Model):
   def category_slug(self):
     return self.category.slug
     
+  def img_path(self):
+    return 'http://127.0.0.1:8000' + self.product_image.url
+    
   def __str__(self):
     return self.name
