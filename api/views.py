@@ -16,11 +16,17 @@ class CategoryAPI(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gener
   def post(self, request, *args, **kwargs):
     return self.create(request, *args, **kwargs)
 
-class LatestProductsAPI(mixins.ListModelMixin, generics.GenericAPIView):
+class AllProductsAPI(mixins.ListModelMixin, generics.GenericAPIView):
   serializer_class = ProductSerializer
   queryset = Product.objects.all()
   def get(self, request, *args, **kwargs):
     return self.list(self, request, *args, **kwargs)
+    
+class LatestProductsAPI(mixins.ListModelMixin, generics.GenericAPIView):
+  serializer_class = ProductSerializer
+  queryset = Product.objects.all()[:5]
+  def get(self, request, *args, **kwargs):
+    return self.list(request, *args, **kwargs)
 
 class CreateProductAPI(mixins.CreateModelMixin, generics.GenericAPIView):
   serializer_class = ProductSerializer
