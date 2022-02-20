@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 class Category(models.Model):
   name = models.CharField(max_length=50)
@@ -21,7 +22,7 @@ class Product(models.Model):
   slug = models.SlugField()
   price = models.DecimalField(max_digits=7, decimal_places=2)
   description = models.TextField(max_length=200, blank=True, null=True)
-  product_image = models.ImageField(upload_to='uploads/')
+  product_image = CloudinaryField('image')
   date_created = models.DateTimeField(auto_now_add=True)
   
   class Meta:
@@ -34,7 +35,7 @@ class Product(models.Model):
     return self.category.slug
     
   def img_path(self):
-    return 'http://127.0.0.1:8000' + self.product_image.url
+    return self.product_image.url
     
   def __str__(self):
     return self.name
